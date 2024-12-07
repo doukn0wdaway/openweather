@@ -11,6 +11,14 @@
     display: flex;
     .ant-select {
       width: 100%;
+      .ant-select-selector {
+        border-top-right-radius: 0px;
+        border-bottom-right-radius: 0px;
+      }
+    }
+    .ant-btn {
+      border-top-left-radius: 0px;
+      border-bottom-left-radius: 0px;
     }
   }
   .cards-wrapper {

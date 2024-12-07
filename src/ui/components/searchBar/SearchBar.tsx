@@ -14,9 +14,11 @@ import {
 
 const { confirm } = Modal;
 export const SearchBar = () => {
-  const [inputText, setInputText] = useState<string>('');
+  const [inputText, setInputText] = useState<string | null>(null);
   const [debouncedInput, setDebouncedInput] = useState<string | null>(null);
-  const { data, error } = useSearchCityQuery(debouncedInput);
+  const { data, error } = useSearchCityQuery(debouncedInput, {
+    skip: debouncedInput === null || debouncedInput.trim() === '',
+  });
   const [options, setOptions] = useState<DefaultOptionType[]>([]);
   const { cities } = useTypedSelector(weatherSliceSelector);
   const dispatch = useTypedDispatch();
@@ -32,7 +34,7 @@ export const SearchBar = () => {
 
   useEffect(() => {
     const handler = setTimeout(() => {
-      if (inputText.length >= 3) {
+      if (inputText && inputText.length >= 3) {
         setDebouncedInput(inputText);
       } else {
         setDebouncedInput(null);
