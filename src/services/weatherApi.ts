@@ -1,18 +1,14 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
+import {
+  ExcludeOption,
+  TCity,
+  TCityWeather,
+  TCityWithLocalNames,
+} from './types';
 // onecall?lat={lat}&lon={lon}&exclude={part}&appid={API key}
 //
 const token = import.meta.env.VITE_OPENWEATHER_TOKEN;
 
-export interface TCity {
-  name: string;
-  lat: number;
-  lon: number;
-  country: string;
-  state: string;
-}
-export type TCityWithLocalNames = TCity & {
-  local_names: string[];
-};
 export const weatherApi = createApi({
   reducerPath: 'weatherApi',
   baseQuery: fetchBaseQuery({
@@ -32,6 +28,21 @@ export const weatherApi = createApi({
         }));
       },
     }),
+    getCityWeather: builder.query<
+      TCityWeather,
+      {
+        lat: number;
+        lon: number;
+        exclude?: ExcludeOption[];
+      } | null
+    >({
+      query: params =>
+        `data/3.0/onecall?lat=${params?.lat}&lon=${params?.lon}&appid=${token}&units=metric&exclude=${params?.exclude ? params.exclude.join(',') : 'daily,hourly,alerts,minutely'}}`,
+    }),
   }),
 });
-export const { useSearchCityQuery } = weatherApi;
+export const {
+  useSearchCityQuery,
+  useGetCityWeatherQuery,
+  useLazyGetCityWeatherQuery,
+} = weatherApi;

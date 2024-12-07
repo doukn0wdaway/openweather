@@ -4,18 +4,20 @@ import {
   Route,
 } from 'react-router-dom';
 import MainPage from './ui/pages/mainPage/MainPage';
-import { CityCard } from './ui/components/city/CityCard';
+
+import CityPage from './ui/pages/cityPage/CityPage';
+import { Layout } from './ui/pages/Layout';
 
 export const router = createBrowserRouter(
   createRoutesFromElements(
-    <Route>
+    <Route element={<Layout />}>
       <Route
-        index
+        path='/'
         element={<MainPage />}
       />
       <Route
-        path='/:id'
-        element={<CityCard />}
+        path='/:link'
+        element={<CityPage />}
       />
     </Route>
   )
