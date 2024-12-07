@@ -1,19 +1,21 @@
 import { AutoComplete, Button, Modal } from 'antd';
 import { useEffect, useState } from 'react';
 import { DefaultOptionType } from 'antd/es/select';
+import './SearchBar.scss';
 import {
-  useTypedDispatch,
   useTypedSelector,
-} from '../../../hooks/useTypedReduxHooks';
-import { useSearchCityQuery } from '../../../services/weatherApi';
+  useTypedDispatch,
+} from '../../hooks/useTypedReduxHooks';
+import { useSearchCityQuery } from '../../services/weatherApi';
 import {
+  weatherSliceSelector,
   addCity,
   removeAllCities,
-  weatherSliceSelector,
-} from '../../../store/weatherSlice';
+} from '../../store/weatherSlice';
 
 const { confirm } = Modal;
 export const SearchBar = () => {
+  const dispatch = useTypedDispatch();
   const [inputText, setInputText] = useState<string | null>(null);
   const [debouncedInput, setDebouncedInput] = useState<string | null>(null);
   const { data, error } = useSearchCityQuery(debouncedInput, {
@@ -21,7 +23,6 @@ export const SearchBar = () => {
   });
   const [options, setOptions] = useState<DefaultOptionType[]>([]);
   const { cities } = useTypedSelector(weatherSliceSelector);
-  const dispatch = useTypedDispatch();
 
   useEffect(() => {
     if (!data) return;

@@ -1,0 +1,22 @@
+.card {
+  max-width: 400px;
+  cursor: pointer;
+  width: 100%;
+  .ant-card-body {
+    padding: 12px;
+  }
+  .info-badges {
+    display: flex;
+    align-items: center;
+  }
+  .image {
+    width: 100px;
+    height: 100px;
+    margin-left: auto;
+  }
+  .footer-wrapper {
+    display: flex;
+    margin-top: 16px;
+    justify-content: space-between;
+  }
+}

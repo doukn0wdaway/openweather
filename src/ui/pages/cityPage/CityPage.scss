@@ -1,0 +1,29 @@
+.city-page-wrapper {
+  max-width: 1200px;
+  width: 100%;
+  .card {
+    width: 100%;
+  }
+  .image {
+    width: 100px;
+    height: 100px;
+  }
+
+  .hourly {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .small-weather-info {
+    justify-content: space-between;
+    width: fit-content;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .image {
+      width: 50px;
+      height: 50px;
+    }
+  }
+}
