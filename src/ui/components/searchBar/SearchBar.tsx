@@ -1,13 +1,12 @@
 import { AutoComplete } from 'antd';
 import { useEffect, useState } from 'react';
-import { useSearchCityQuery } from '../../services/weatherApi';
 import { DefaultOptionType } from 'antd/es/select';
-import { TCity } from '../../services/weatherApi';
 import {
-  useTypedDispatch,
   useTypedSelector,
-} from '../../hooks/useTypedReduxHooks';
-import { addCity, weatherSliceSelector } from '../../store/weatherSlice';
+  useTypedDispatch,
+} from '../../../hooks/useTypedReduxHooks';
+import { useSearchCityQuery, TCity } from '../../../services/weatherApi';
+import { weatherSliceSelector, addCity } from '../../../store/weatherSlice';
 
 export const SearchBar = () => {
   const [inputText, setInputText] = useState<string>('');
@@ -16,7 +15,6 @@ export const SearchBar = () => {
   const [options, setOptions] = useState<DefaultOptionType[]>([]);
   const [city, setCity] = useState<TCity>();
 
-  const { cities } = useTypedSelector(weatherSliceSelector);
   const dispatch = useTypedDispatch();
 
   useEffect(() => {
@@ -62,7 +60,6 @@ export const SearchBar = () => {
           dispatch(addCity(data[Number(value)]));
         }}
       />
-      {JSON.stringify({ test: cities })}
     </>
   );
 };

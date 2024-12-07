@@ -11,9 +11,8 @@ interface WeatherState {
 
 const initialState: WeatherState = {
   choosenCity: null,
-  cities: (function () {
-    const cities: TCity[] = ls.getItem(LocalStorageKeys.CITIES) ?? [];
-    return cities;
+  cities: (function (): TCity[] {
+    return ls.getItem(LocalStorageKeys.CITIES) ?? [];
   })(),
   value: 0,
 };
@@ -23,10 +22,14 @@ const weatherSlice = createSlice({
   initialState,
   reducers: {
     addCity: (state, action: PayloadAction<TCity>) => {
-      state.cities = [action.payload, ...state.cities];
-      state.cities = Array.from(new Set(state.cities));
+      const isExists = state.cities.some(
+        e =>
+          e.name == action.payload.name && e.country == action.payload.country
+      );
 
-      // TODO: Пофиксить штуку когда город может дважды повториться
+      if (isExists) return;
+
+      state.cities = [action.payload, ...state.cities];
       ls.setItem(LocalStorageKeys.CITIES, state.cities);
     },
   },
