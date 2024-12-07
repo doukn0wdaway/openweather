@@ -1,20 +1,16 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { TCity } from '../services/weatherApi';
 import { LocalStorageKeys, ls } from '../services/localStorageService';
 import { RootState } from './redux';
+import { TCity } from '../services/types';
 
 interface WeatherState {
-  choosenCity: TCity | null;
-  value: number;
   cities: TCity[];
 }
 
 const initialState: WeatherState = {
-  choosenCity: null,
   cities: (function (): TCity[] {
     return ls.getItem(LocalStorageKeys.CITIES) ?? [];
   })(),
-  value: 0,
 };
 
 const weatherSlice = createSlice({
@@ -32,9 +28,20 @@ const weatherSlice = createSlice({
       state.cities = [action.payload, ...state.cities];
       ls.setItem(LocalStorageKeys.CITIES, state.cities);
     },
+    removeCity: (state, action: PayloadAction<TCity>) => {
+      const newCities = state.cities.filter(
+        e => e.country + e.name != action.payload.country + action.payload.name
+      );
+      state.cities = newCities;
+      ls.setItem(LocalStorageKeys.CITIES, state.cities);
+    },
+    removeAllCities: state => {
+      state.cities = [];
+      ls.setItem(LocalStorageKeys.CITIES, state.cities);
+    },
   },
 });
 
 export const weatherSliceSelector = (state: RootState) => state.weatherSlice;
-export const { addCity } = weatherSlice.actions;
+export const { addCity, removeCity, removeAllCities } = weatherSlice.actions;
 export default weatherSlice;

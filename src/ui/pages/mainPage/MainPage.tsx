@@ -15,12 +15,6 @@ const MainPage = () => {
             city={e}
           />
         ))}
-        {cities.map(e => (
-          <CityCard
-            key={String(e.lon) + String(e.lat)}
-            city={e}
-          />
-        ))}
       </div>
     </>
   );

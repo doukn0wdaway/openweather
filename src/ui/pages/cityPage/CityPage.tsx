@@ -2,7 +2,7 @@ import { useParams } from 'react-router-dom';
 import { useGetCityWeatherQuery } from '../../../services/weatherApi';
 import { useTypedSelector } from '../../../hooks/useTypedReduxHooks';
 import { weatherSliceSelector } from '../../../store/weatherSlice';
-
+// TODO: finish dat shid
 const CityPage = () => {
   const { link } = useParams();
   const { cities } = useTypedSelector(weatherSliceSelector);
