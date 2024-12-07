@@ -107,7 +107,10 @@ const HourlyWeatherWidget = ({ data }: { data: TCityWeather }) => {
       <h2>Hourly forecast</h2>
       <div className='hourly'>
         {(formedHourlyPrognose ?? []).map(e => (
-          <HourlyWeatherEntry data={e} />
+          <HourlyWeatherEntry
+            key={e.dt}
+            data={e}
+          />
         ))}
       </div>
     </>

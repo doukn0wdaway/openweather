@@ -2,12 +2,10 @@
   margin: auto 0;
   width: 100%;
   display: flex;
-  .ant-select {
+  .ant-input {
     width: 100%;
-    .ant-select-selector {
-      border-top-right-radius: 0px;
-      border-bottom-right-radius: 0px;
-    }
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
   }
   .ant-btn {
     border-top-left-radius: 0px;
