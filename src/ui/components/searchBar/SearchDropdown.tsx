@@ -6,7 +6,7 @@ export type DropdownOption<T> = { key: string; text: string; value: T };
 interface ISearchDropdown<T> {
   options: DropdownOption<T>[];
   width: number;
-  onChoose?: (e?: T) => any;
+  onChoose?: (e?: T) => void;
   isVisible: boolean;
   setIsVisible: React.Dispatch<React.SetStateAction<boolean>>;
 }

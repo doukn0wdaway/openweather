@@ -3,7 +3,7 @@ export enum LocalStorageKeys {
 }
 
 export const ls = {
-  setItem: (key: LocalStorageKeys, value: any) => {
+  setItem: (key: LocalStorageKeys, value: unknown) => {
     localStorage.setItem(key, JSON.stringify(value));
   },
   removeItem: (key: LocalStorageKeys) => {

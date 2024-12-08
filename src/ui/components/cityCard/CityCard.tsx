@@ -15,7 +15,7 @@ import './CityCard.scss';
 
 const { confirm } = Modal;
 
-const confirmDeletion = (callbackFn: () => any) => {
+const confirmDeletion = (callbackFn: () => void) => {
   confirm({
     title: 'Are you sure that u want to delete this city?',
 
