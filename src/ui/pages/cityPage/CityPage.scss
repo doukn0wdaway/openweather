@@ -9,21 +9,11 @@
     height: 100px;
   }
 
-  .hourly {
+  .no-city-weather {
+    height: 400px;
     display: flex;
-    justify-content: space-between;
-  }
-
-  .small-weather-info {
-    justify-content: space-between;
-    width: fit-content;
-    display: flex;
-    flex-direction: column;
     align-items: center;
-
-    .image {
-      width: 50px;
-      height: 50px;
-    }
+    justify-content: center;
+    font-size: 24px;
   }
 }

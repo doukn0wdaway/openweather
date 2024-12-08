@@ -1,17 +1,17 @@
-import { Button, Card, Modal } from 'antd';
+import { Modal, Card, Button } from 'antd';
+import { useNavigate } from 'react-router-dom';
+import { HumidityIcon } from '../../../assets/HumidityIcon';
+import { useTypedDispatch } from '../../../hooks/useTypedReduxHooks';
+import { TCity } from '../../../services/types';
 import {
   useGetCityWeatherQuery,
   useLazyGetCityWeatherQuery,
-} from '../../services/weatherApi';
-import { HumidityIcon } from '../../assets/HumidityIcon';
-import { useTypedDispatch } from '../../hooks/useTypedReduxHooks';
-import { removeCity } from '../../store/weatherSlice';
-import { degreesToDirection } from '../../utils/degreesToDirection';
-import { TCity } from '../../services/types';
+} from '../../../services/weatherApi';
+import { removeCity } from '../../../store/weatherSlice';
+import { degreesToDirection } from '../../../utils/degreesToDirection';
+import { formTitle } from '../../../utils/formTitle';
+import { Badge } from '../badge/Badge';
 import './CityCard.scss';
-import { useNavigate } from 'react-router-dom';
-import { formTitle } from '../../utils/formTitle';
-import { Badge } from './Badge';
 
 const { confirm } = Modal;
 

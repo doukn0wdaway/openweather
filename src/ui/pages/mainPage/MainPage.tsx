@@ -1,7 +1,7 @@
 import { useTypedSelector } from '../../../hooks/useTypedReduxHooks';
 import { weatherSliceSelector } from '../../../store/weatherSlice';
-import { SearchBar } from '../../components/SearchBar';
-import { CityCard } from '../../components/CityCard';
+import { SearchBar } from '../../components/searchBar/SearchBar';
+import { CityCard } from '../../components/cityCard/CityCard';
 
 const MainPage = () => {
   const { cities } = useTypedSelector(weatherSliceSelector);

@@ -1,6 +1,6 @@
 import { ReactNode } from 'react';
 import './Badge.scss';
-
+import { clsx } from 'clsx';
 export const Badge = ({
   accent = false,
   ...props
@@ -11,7 +11,7 @@ export const Badge = ({
 }) => {
   return (
     <span
-      className={`badge ${accent && 'badge-accent'} ${props.className ?? ''} `}
+      className={clsx('badge', { 'badge-accent': accent }, props.className)}
     >
       {props.children}
     </span>

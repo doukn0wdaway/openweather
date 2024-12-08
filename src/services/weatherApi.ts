@@ -16,6 +16,7 @@ export const weatherApi = createApi({
   }),
   endpoints: builder => ({
     searchCity: builder.query<TCity[], string | null>({
+      keepUnusedDataFor: 0,
       query: name => `geo/1.0/direct?q=${name}&limit=5&appid=${token}`,
       transformResponse: (response: TCityWithLocalNames[]) => {
         if (!response) return [];

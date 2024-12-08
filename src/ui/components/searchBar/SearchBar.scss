@@ -1,0 +1,39 @@
+.search {
+  margin: auto 0;
+  width: 100%;
+  display: flex;
+  z-index: 1;
+  .ant-input {
+    width: 100%;
+    border-top-right-radius: 0px;
+    z-index: 0;
+    border-bottom-right-radius: 0px;
+  }
+  .ant-btn {
+    z-index: 0;
+    border-top-left-radius: 0px;
+    border-bottom-left-radius: 0px;
+  }
+  &-dropdown {
+    position: absolute;
+    z-index: 0;
+    background: white;
+    top: 24px;
+    left: 0;
+    padding: 4px;
+    border: 1px solid #d9d9d9;
+    border-radius: 0px 0px 6px 6px;
+    padding-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    &-item {
+      width: 100%;
+      padding: 8px;
+      border-radius: 4px;
+      &:hover {
+        background-color: rgba(0, 0, 0, 0.03);
+      }
+    }
+  }
+}
